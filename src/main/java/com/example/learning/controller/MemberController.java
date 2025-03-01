@@ -1,7 +1,7 @@
 package com.example.learning.controller;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,5 +35,23 @@ public class MemberController {
 		model.addAttribute("memberlist", memberList);
 		return "ListMember";
 	}
+	@GetMapping("viewmember")
+	public String viewmember(Integer memberId,Model model) {
+		System.out.println("id ===>" +memberId); 
+		Optional<MemberEntity> op =repositoryMember.findById(memberId);
+		if(op.isEmpty()) {
+			
+		}else {
+			MemberEntity member=op.get();
+			model.addAttribute("member", member);
+		}
+		return"ViewMember";
+	}
+	@GetMapping("deletemembers")
+	public String deletemembers(Integer memberId) {
+		repositoryMember.deleteById(memberId);
+		return"redirect:/listmember";
+	}
+	
 
 }

@@ -16,6 +16,7 @@
 	 	<th>member Name</th>
 	 	<th>Age</th>
 	 	<th>Profile Photo</th>
+	 	<th>Action</th>
 	 </tr>
 		 <c:forEach items="${memberlist }" var="m">
 		
@@ -23,6 +24,7 @@
 				<td>${m.memberName }</td>
 				<td>${m.age }</td>
 				<td>${m.profilePhoto }</td>
+				<td><a href="viewmember?memberId=${m.memberId }">View</a>    |    <a href="deletemembers?memberId=${m.memberId } ">Delete</a></td>
 			</tr>
 		
 		</c:forEach> 
